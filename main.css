@@ -1,0 +1,34 @@
+body{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    font-family: "Helvetica";
+}
+
+nav {
+    padding: 1rem;
+}
+
+.picture-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.picture-container img {
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem;
+    border: 1px solid black;
+}
+
+
+@media screen and (min-width: 1000px){
+    body{
+        background: red;
+    }
+}
