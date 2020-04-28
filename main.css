@@ -8,8 +8,17 @@ body{
     font-family: "Helvetica";
 }
 
+.logo{
+    padding-top:2em;
+    width: 8em;
+}
+
 nav {
     padding: 1rem;
+    /*display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;*/
+
 }
 
 .picture-container {
@@ -26,9 +35,40 @@ nav {
     border: 1px solid black;
 }
 
+button, input{
+    border: solid 1px black;
+    background: none;
+}
+
+button{
+    background-color: none;
+    transition: background-color .2s, color .2s;
+    color: black;
+}
+
+button:hover{
+ background-color: indigo;
+ color: white;
+}
+
+button:active, ion-icon:active{
+    transform: scale(0.98);
+}
+
+button:focus, ion-icon:focus{
+    outline: none;
+}
+
+.icon{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 2em;
+}
+
 
 @media screen and (min-width: 1000px){
     body{
-        background: red;
+        /*background: red;*/
     }
 }
