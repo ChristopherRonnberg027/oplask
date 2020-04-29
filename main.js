@@ -9,18 +9,20 @@ const SEARCH_INPUT = document.querySelector(".search")
 
 let currentPage = 1
 const pictureCache = {}
+let searchWord = ""
 
 async function fetchPictures(searchWord, page) {
-    if (pictureCache[searchWord, page]) {
-        console.log("Cache")
-        return pictureCache[searchWord, page]
-
+    let complete_url = URL + page + SEARCH_FOR + searchWord + CLIENT_ID
+    if (pictureCache[complete_url]) {
+        console.log("Data from cache")
+        return pictureCache[complete_url]
     }
-    const response = await fetch(URL + page + SEARCH_FOR + searchWord + CLIENT_ID)
+    const response = await fetch(complete_url)
     const data = await response.json()
-    pictureCache[searchWord, page] = data.results
-    console.log(data)
+    pictureCache[complete_url] = data.results
+    console.log(pictureCache)
     TOTAL_PAGES = data.total_pages
+    console.log("Fetching data")
     return data.results
 }
 
@@ -51,16 +53,16 @@ function renderPictures(container, pictureArray) {
 }
 
 //Visa 10 hello bilder
-let searchWord = "hello"
-
 async function showTenHelloPictures() {
+    searchWord = "hello"
     const pictures = await fetchPictures(searchWord, currentPage)
     renderPictures(PICTURE_CONTAINER, pictures)
 }
 
 
 SEARCH_INPUT.addEventListener("change", () => {
-    let searchWord = document.querySelector(".search").value
+    currentPage = 1
+    searchWord = document.querySelector(".search").value
     searchPictures(searchWord)
 })
 
@@ -103,32 +105,54 @@ function populateFavorites() {
 }
 */
 
+
+
+
 //DA LIGHTBOX
 const lightbox = document.createElement("div")
-
 lightbox.id = "lightbox"
 
-const box = document.getElementById("box")
+// const save = document.createElement("button")/////
+// save.id = "save"//////
+
+
+const box = document.querySelector("#box")
+
+const PAGINATION = document.querySelector(".pagination")
+
+console.log(PAGINATION)
+
 box.appendChild(lightbox)
 
+box.appendChild(PAGINATION)
 
+// box.appendChild(save) ///////
+
+const SAVE_BUTTON = document.querySelector(".saveButton")
 const images = document.getRootNode()
-
+console.log(images)
 images.addEventListener('click', (image) => {
+
     if (image.srcElement.nodeName == 'IMG') {
         lightbox.style.display = 'flex'
         lightbox.classList.add('active')
 
         const img = document.createElement('img')
         img.src = image.srcElement.currentSrc
+        console.log(img.src)
         lightbox.innerHTML = ''
         lightbox.appendChild(img)
+        console.log(lightbox)
+        SAVE_BUTTON.style.display = 'block'
+        PAGINATION.style.display = 'block'
     }
 })
 
 lightbox.addEventListener('click', ()=>{
     lightbox.style.display = 'none'
     lightbox.classList.remove('active')
+    SAVE_BUTTON.style.display = 'none'
+    PAGINATION.style.display = 'none'
 })
 
 
