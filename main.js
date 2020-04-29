@@ -114,7 +114,7 @@ lightbox.id = "lightbox"
 
 const save = document.createElement("button")
 save.id = "save"
-//save.setAttribute("download","")
+
 
 
 const like = document.createElement("button")
@@ -137,9 +137,12 @@ const SAVE_BUTTON = document.querySelector(".saveButton")
 const images = document.getRootNode()
 console.log(images)
 images.addEventListener('click', (image) => {
-
+    
     if (image.srcElement.nodeName == 'IMG') {
 
+        let output = image.srcElement
+        console.log(output)
+        save.setAttribute("download", "")
         lightbox.style.display = 'flex'
         lightbox.classList.add('active')
 
@@ -172,6 +175,19 @@ lightbox.addEventListener('click', ()=>{
     like.classList.remove('active')
     like.style.display = 'none'
     //PAGINATION.style.display = 'none'
-})
+        console.log(lightbox)
+        /*SAVE_BUTTON.style.display = 'block'
+        PAGINATION.style.display = 'block'*/
+        
+    })
+
+
+
+
+
+
+
+
+
 
 

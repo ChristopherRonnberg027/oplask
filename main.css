@@ -103,8 +103,8 @@ button:focus, ion-icon:focus{
 */
 #save{
     background: url("img/save-icon.svg") no-repeat;
-    width: 5em;
-    height: 5em;
+    width: 3em;
+    height: 3em;
     position: fixed;
     bottom: 2em;
     right: 20em;
@@ -120,8 +120,8 @@ button:focus, ion-icon:focus{
 #like{
     background: url("img/like-icon.svg") no-repeat;
     position: fixed;
-    width: 5em;
-    height: 5em;
+    width: 3em;
+    height: 3em;
     bottom: 2em;
     right: 15em;
     display: none;
