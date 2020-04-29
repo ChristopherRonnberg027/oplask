@@ -95,21 +95,41 @@ button:focus, ion-icon:focus{
     width: 40em;
 }
 
+/*
 .saveButton{
     display: none;
     z-index: 1003;
 }
-
-
+*/
 #save{
+    background: url("img/save-icon.svg") no-repeat;
+    width: 5em;
+    height: 5em;
     position: fixed;
     bottom: 2em;
     right: 20em;
     display: none;
     z-index: 1003;
+    border:none;
 }
 
 #save.active{
+   display: block;
+}
+
+#like{
+    background: url("img/like-icon.svg") no-repeat;
+    position: fixed;
+    width: 5em;
+    height: 5em;
+    bottom: 2em;
+    right: 15em;
+    display: none;
+    z-index: 1003;
+    border: none;
+}
+
+#like.active{
    display: block;
 }
 
