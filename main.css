@@ -10,35 +10,83 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 1200px;
 }
 
-.logo{
-    padding-top:2em;
-    width: 8em;
-}
-
-nav {
-    padding: 1rem;
-    /*display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;*/
-
-}
-
-.picture-container {
+header{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.icon{
+    padding-right: 20em;
+}
+
+.icon svg{
+    fill:none;
+    transition: fill .2s;
+}
+
+.logo{
+    padding-right:25em;
+    width: 18em;
+}
+
+
+
+nav {
+    padding: 2rem;
+    display: flex;
+}
+
+nav input{
+    margin-left:2em;
+    margin-right:2em;
+}
+
+nav svg{
+display:  none;
+}
+
+/*
+.picture-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    justify-content: center;
+    align-content: center;
+    grid-gap: 1em;*/
+
+    /*display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    
+}
+*/
+
+/* nytt*/
+.picture-container {
+    line-height: 2em;
+    -webkit-column-count: 3;
+    -webkit-column-gap: .8em;
+    -moz-column-count: 3;
+    -moz-column-gap: 0.8em;
+    column-count: 3;
+    column-gap: .8em;
 }
 
 .picture-container img {
+    
+    /*
     width: 15rem;
-    /*width: 100%;*/
     height: 15rem;
     margin: 1rem;
     border: 1px solid black;
+    */
+
+    max-width: 100%;
+    height: auto;
 }
 
 /* button, input{
@@ -68,12 +116,7 @@ button:focus, ion-icon:focus{
 } */
 
 
-.icon{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-gap: 2em;
-}
+
 
 #lightbox{
     position: fixed;
@@ -135,9 +178,6 @@ button:focus, ion-icon:focus{
 
 
 @media screen and (min-width: 1000px){
-    body{
-        /*background: red;*/
-    }
 }
 
 .prototype{
