@@ -102,8 +102,15 @@ button:focus, ion-icon:focus{
 
 
 #save{
+    position: fixed;
+    bottom: 2em;
+    right: 20em;
     display: none;
     z-index: 1003;
+}
+
+#save.active{
+   display: block;
 }
 
 

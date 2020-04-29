@@ -112,8 +112,8 @@ function populateFavorites() {
 const lightbox = document.createElement("div")
 lightbox.id = "lightbox"
 
-// const save = document.createElement("button")/////
-// save.id = "save"//////
+const save = document.createElement("button")
+save.id = "save"
 
 
 const box = document.querySelector("#box")
@@ -126,7 +126,7 @@ box.appendChild(lightbox)
 
 box.appendChild(PAGINATION)
 
-// box.appendChild(save) ///////
+box.appendChild(save)
 
 const SAVE_BUTTON = document.querySelector(".saveButton")
 const images = document.getRootNode()
@@ -135,8 +135,9 @@ images.addEventListener('click', (image) => {
 
     if (image.srcElement.nodeName == 'IMG') {
         lightbox.style.display = 'flex'
+        save.style.disply = 'block'
         lightbox.classList.add('active')
-
+        save.classList.add('active')
         const img = document.createElement('img')
         img.src = image.srcElement.currentSrc
         console.log(img.src)
@@ -145,13 +146,16 @@ images.addEventListener('click', (image) => {
         console.log(lightbox)
         SAVE_BUTTON.style.display = 'block'
         PAGINATION.style.display = 'block'
+        
     }
 })
 
 lightbox.addEventListener('click', ()=>{
     lightbox.style.display = 'none'
     lightbox.classList.remove('active')
+    save.classList.remove('active')
     SAVE_BUTTON.style.display = 'none'
+    save.style.display = 'none'
     PAGINATION.style.display = 'none'
 })
 
