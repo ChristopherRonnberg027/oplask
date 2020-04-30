@@ -105,13 +105,7 @@ function disabledButton() {
         NEXT_BUTTON.disabled = true
     }
 }
-/*
-//Favorit-lista sparad i webbläsaren
 
-function populateFavorites() {
-    localStorage.setItem('1', 'data.id')
-}
-*/
 
 
 
@@ -137,9 +131,11 @@ box.appendChild(lightbox)
 box.appendChild(PAGINATION)
 box.appendChild(save)
 box.appendChild(like)
+let name = document.createElement("p")
+name.id = "name"
+box.appendChild(name)
 
 const SAVE_BUTTON = document.querySelector(".saveButton")
-//SAVE_BUTTON.setAttribute("download", "")
 const images = document.getRootNode()
 console.log(images)
 const FAVORITER = document.querySelector('#favorites-container')
@@ -149,9 +145,7 @@ images.addEventListener('click', (image) => {
     if (image.srcElement.nodeName == 'IMG') {
 
         let output = image.srcElement
-        console.log(output.src)
-        let output2 = output.src
-        console.log(output2)
+
         save.setAttribute("download", "")
         lightbox.style.display = 'flex'
         lightbox.classList.add('active')
@@ -162,73 +156,50 @@ images.addEventListener('click', (image) => {
         like.style.display = 'block'
         like.classList.add('active')
 
+        name.classList.add('active')
+        name.style.display = 'block'
+
+        let likes = 0
+        let nameFromImg = ""
+        let liked_by_user = false
+
+
+
+        for (let i = 0; i < dataCache.length; i++) {
+            if (dataCache[i].urls.regular === output.src) {
+                likes = dataCache[i].likes
+                nameFromImg = dataCache[i].user.name
+                liked_by_user = dataCache[i].liked_by_user
+            }
+            name.innerText = nameFromImg
+        }
 
         like.addEventListener("click", () => {
             console.log("like button is clicked")
-            let favoritImg = document.createElement('img')
-            
-            favoritImg = output2
-            
-            console.log(favoritImg)
-            console.log(dataCache[0].urls.regular)
-            //console.log(favoritImg)
-            //FAVORITER.appendChild(favoritImg)
-
-            let likes = 0
-
-
-            for(let i = 0; i < dataCache.length; i++){
-                //console.log(dataCache[i].urls)
-                if(dataCache[i].urls.regular === favoritImg){
-                    console.log("inne i loopen")
-                    likes = dataCache[i].likes
-                    console.log(likes)
-                    name = dataCache[i].user.name
-                    console.log(name)
-                    let liked_by_user = dataCache[i].liked_by_user
-                    console.log(liked_by_user)
-                    break
-                } else {
-                    console.log("FAIL!")
-                }
-            }
-
         })
 
         const img = document.createElement('img')
         img.src = image.srcElement.currentSrc
         lightbox.innerHTML = ''
         lightbox.appendChild(img)
-        console.log(lightbox)
-        /*SAVE_BUTTON.style.display = 'block'
-        PAGINATION.style.display = 'block'*/
-
-
-        // test
-        //for (let i = 0; i < 10; i++) {
-        //     console.log(pictureCache.complete_url[i]) 
-        // }
-
     }
 })
 
 
 
+// ta
 lightbox.addEventListener('click', () => {
     lightbox.style.display = 'none'
     lightbox.classList.remove('active')
 
     save.style.display = 'none'
     save.classList.remove('active')
-    //SAVE_BUTTON.style.display = 'none'
 
     like.classList.remove('active')
     like.style.display = 'none'
-    //PAGINATION.style.display = 'none'
-    console.log(lightbox)
-    /*SAVE_BUTTON.style.display = 'block'
-    PAGINATION.style.display = 'block'*/
 
+    name.style.display = 'none'
+    name.classList.remove('active')
 })
 
 

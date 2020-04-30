@@ -243,6 +243,26 @@ button:focus, ion-icon:focus{
 }
 
 
+#name{
+    position: fixed;
+    top: 2em;
+    right: 25em;
+    display: none;
+    z-index: 1010;
+    border: none;
+    font-weight: 600;
+    color: black;
+    padding: 1em;
+    background: white;
+}
+
+#like.name{
+   display: block;
+}
+
+
+
+
 
 
 .prototype{
