@@ -14,13 +14,22 @@ body{
 }
 
 header{
-    display: flex;
+    
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-areas: 
+    "myFavorites logo ..";
+
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .icon{
-    padding-right: 20em;
+    padding-top: 3em;
+    grid-area: myFavorites;
+    /*padding-right: 20em;*/
 }
 
 .icon svg{
@@ -29,8 +38,11 @@ header{
 }
 
 .logo{
+    /*
     padding-right:25em;
     width: 18em;
+    */
+    grid-area: logo;
 }
 
 
@@ -65,7 +77,7 @@ display:  none;
 }
 */
 
-/* nytt*/
+ nytt
 .picture-container {
     line-height: 2em;
     -webkit-column-count: 3;
@@ -75,6 +87,47 @@ display:  none;
     column-count: 3;
     column-gap: .8em;
 }
+
+
+@media (min-width: 300px){
+
+    .picture-container{
+        line-height: 2em;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 0;
+        -moz-column-count: 1;
+        -moz-column-gap: 0;
+        column-count: 1;
+        column-gap: 0;
+    }
+}
+
+@media (min-width: 600px){
+
+    .picture-container{
+        line-height: 2em;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 0.5em;
+        -moz-column-count: 2;
+        -moz-column-gap: 0.5em;
+        column-count: 2;
+        column-gap: 0.5em;
+    }
+}
+
+@media (min-width: 1000px){
+
+    .picture-container{
+        line-height: 2em;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 0.8em;
+        -moz-column-count: 2;
+        -moz-column-gap: 0.5em;
+        column-count: 3;
+        column-gap: 0.8em;
+    }
+}
+
 
 .picture-container img {
     
@@ -177,8 +230,7 @@ button:focus, ion-icon:focus{
 }
 
 
-@media screen and (min-width: 1000px){
-}
+
 
 .prototype{
     display: none;
