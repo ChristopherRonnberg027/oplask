@@ -28,8 +28,8 @@ header{
 
 .icon{
     padding-top: 3em;
+    /* padding-right: 20em; */
     grid-area: myFavorites;
-    /*padding-right: 20em;*/
 }
 
 .icon svg{
@@ -38,10 +38,6 @@ header{
 }
 
 .logo{
-    /*
-    padding-right:25em;
-    width: 18em;
-    */
     grid-area: logo;
 }
 
@@ -77,8 +73,9 @@ display:  none;
 }
 */
 
- nytt
+ /*nytt*/
 .picture-container {
+
     line-height: 2em;
     -webkit-column-count: 3;
     -webkit-column-gap: .8em;
@@ -90,6 +87,12 @@ display:  none;
 
 
 @media (min-width: 300px){
+
+    /* header{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-areas: 
+        "myFavorites logo";
+    } */
 
     .picture-container{
         line-height: 2em;
@@ -213,6 +216,11 @@ button:focus, ion-icon:focus{
    display: block;
 }
 
+#save.active:hover {
+    width: 3.2em;
+    height: 3.2em;
+}
+
 #like{
     background: url("img/like-icon.svg") no-repeat;
     position: fixed;
@@ -227,6 +235,11 @@ button:focus, ion-icon:focus{
 
 #like.active{
    display: block;
+}
+
+#like.active:hover {
+    width: 3.2em;
+    height: 3.2em;
 }
 
 

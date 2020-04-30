@@ -136,12 +136,13 @@ const SAVE_BUTTON = document.querySelector(".saveButton")
 //SAVE_BUTTON.setAttribute("download", "")
 const images = document.getRootNode()
 console.log(images)
+
 images.addEventListener('click', (image) => {
-    
+
     if (image.srcElement.nodeName == 'IMG') {
 
         let output = image.srcElement
-        console.log(output)
+        console.log(output.id)
         save.setAttribute("download", "")
         lightbox.style.display = 'flex'
         lightbox.classList.add('active')
@@ -152,34 +153,46 @@ images.addEventListener('click', (image) => {
         like.style.display = 'block'
         like.classList.add('active')
 
+
+        like.addEventListener("click", () => {
+            console.log("like button is clicked")
+        })
+
         const img = document.createElement('img')
         img.src = image.srcElement.currentSrc
-        console.log(img.src)
         lightbox.innerHTML = ''
         lightbox.appendChild(img)
         console.log(lightbox)
         /*SAVE_BUTTON.style.display = 'block'
         PAGINATION.style.display = 'block'*/
-        
+
+
+        // test
+        //for (let i = 0; i < 10; i++) {
+        //     console.log(pictureCache.complete_url[i]) 
+        // }
+
     }
 })
 
-lightbox.addEventListener('click', ()=>{
+
+
+lightbox.addEventListener('click', () => {
     lightbox.style.display = 'none'
     lightbox.classList.remove('active')
 
     save.style.display = 'none'
     save.classList.remove('active')
     //SAVE_BUTTON.style.display = 'none'
-    
+
     like.classList.remove('active')
     like.style.display = 'none'
     //PAGINATION.style.display = 'none'
-        console.log(lightbox)
-        /*SAVE_BUTTON.style.display = 'block'
-        PAGINATION.style.display = 'block'*/
-        
-    })
+    console.log(lightbox)
+    /*SAVE_BUTTON.style.display = 'block'
+    PAGINATION.style.display = 'block'*/
+
+})
 
 
 
