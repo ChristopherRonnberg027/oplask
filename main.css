@@ -133,13 +133,6 @@ display:  none;
 
 
 .picture-container img {
-    
-    /*
-    width: 15rem;
-    height: 15rem;
-    margin: 1rem;
-    border: 1px solid black;
-    */
 
     max-width: 100%;
     height: auto;
@@ -194,12 +187,6 @@ button:focus, ion-icon:focus{
     width: 40em;
 }
 
-/*
-.saveButton{
-    display: none;
-    z-index: 1003;
-}
-*/
 #save{
     background: url("img/save-icon.svg") no-repeat;
     width: 3em;
@@ -245,8 +232,8 @@ button:focus, ion-icon:focus{
 
 #name{
     position: fixed;
-    top: 2em;
-    right: 25em;
+    bottom: 5em;
+    right: 10em;
     display: none;
     z-index: 1010;
     border: none;
@@ -259,10 +246,6 @@ button:focus, ion-icon:focus{
 #like.name{
    display: block;
 }
-
-
-
-
 
 
 .prototype{

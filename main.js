@@ -138,7 +138,8 @@ box.appendChild(name)
 const SAVE_BUTTON = document.querySelector(".saveButton")
 const images = document.getRootNode()
 console.log(images)
-const FAVORITER = document.querySelector('#favorites-container')
+const FAVORITER = document.querySelector(".favorites-container")
+console.log(FAVORITER)
 
 images.addEventListener('click', (image) => {
 
@@ -163,8 +164,6 @@ images.addEventListener('click', (image) => {
         let nameFromImg = ""
         let liked_by_user = false
 
-
-
         for (let i = 0; i < dataCache.length; i++) {
             if (dataCache[i].urls.regular === output.src) {
                 likes = dataCache[i].likes
@@ -176,7 +175,23 @@ images.addEventListener('click', (image) => {
 
         like.addEventListener("click", () => {
             console.log("like button is clicked")
+            likedPictures.push(output.src)
+            localStorage.setItem("likedPictures", JSON.stringify(likedPictures))
+            //sparadArray = JSON.parse(localStorage.getItem("likedPictures"))
+            console.log(JSON.parse(localStorage.getItem("likedPictures")))
+            //console.log(sparadArray)
+            for (let i = 0; i < likedPictures.length; i++) {
+                console.log(likedPictures[i])
+                console.log("här" + i)
+            }
         })
+
+        //const array = [] // array
+        //array[0] = "Hell World" // array med något
+        //localeStorage.setItem("array", JSPN.stringify(array)) // sparar arrayen i browsern
+
+        //const sparadArray = JSON.parse(localStorage.getItem("array")) // hämtar array från localestorage
+
 
         const img = document.createElement('img')
         img.src = image.srcElement.currentSrc
@@ -185,8 +200,10 @@ images.addEventListener('click', (image) => {
     }
 })
 
+myStorage = window.localStorage;
 
-
+let likedPictures = []
+const sparadArray = []
 // ta
 lightbox.addEventListener('click', () => {
     lightbox.style.display = 'none'
@@ -201,14 +218,6 @@ lightbox.addEventListener('click', () => {
     name.style.display = 'none'
     name.classList.remove('active')
 })
-
-
-
-
-
-
-
-
 
 
 
