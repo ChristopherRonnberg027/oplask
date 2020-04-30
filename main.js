@@ -1,6 +1,7 @@
 const URL = "http://api.unsplash.com/search/photos?page="
 
 let TOTAL_PAGES = 1
+let complete_url
 const SEARCH_FOR = "&query="
 const CLIENT_ID = "&client_id=eymPo17tytd_9pUxyyyEyvVZnWBjJlk-bZI9QmPzM_c"
 const PICTURE_CONTAINER = document.querySelector(".picture-container")
@@ -9,10 +10,12 @@ const SEARCH_INPUT = document.querySelector(".search")
 
 let currentPage = 1
 const pictureCache = {}
+let dataCache = {}
 let searchWord = ""
 
 async function fetchPictures(searchWord, page) {
-    let complete_url = URL + page + SEARCH_FOR + searchWord + CLIENT_ID
+    complete_url = URL + page + SEARCH_FOR + searchWord + CLIENT_ID
+    console.log(complete_url)
     if (pictureCache[complete_url]) {
         console.log("Data from cache")
         return pictureCache[complete_url]
@@ -23,6 +26,11 @@ async function fetchPictures(searchWord, page) {
     console.log(pictureCache)
     TOTAL_PAGES = data.total_pages
     console.log("Fetching data")
+    console.log(data.results[0].user.name)
+    console.log(data.results[0].likes)
+    console.log(data.results[0].liked_by_user)
+    dataCache = data.results
+    console.log(dataCache)
     return data.results
 }
 
@@ -115,8 +123,6 @@ lightbox.id = "lightbox"
 const save = document.createElement("button")
 save.id = "save"
 
-
-
 const like = document.createElement("button")
 like.id = "like"
 
@@ -136,13 +142,16 @@ const SAVE_BUTTON = document.querySelector(".saveButton")
 //SAVE_BUTTON.setAttribute("download", "")
 const images = document.getRootNode()
 console.log(images)
+const FAVORITER = document.querySelector('#favorites-container')
 
 images.addEventListener('click', (image) => {
 
     if (image.srcElement.nodeName == 'IMG') {
 
         let output = image.srcElement
-        console.log(output.id)
+        console.log(output.src)
+        let output2 = output.src
+        console.log(output2)
         save.setAttribute("download", "")
         lightbox.style.display = 'flex'
         lightbox.classList.add('active')
@@ -156,6 +165,34 @@ images.addEventListener('click', (image) => {
 
         like.addEventListener("click", () => {
             console.log("like button is clicked")
+            let favoritImg = document.createElement('img')
+            
+            favoritImg = output2
+            
+            console.log(favoritImg)
+            console.log(dataCache[0].urls.regular)
+            //console.log(favoritImg)
+            //FAVORITER.appendChild(favoritImg)
+
+            let likes = 0
+
+
+            for(let i = 0; i < dataCache.length; i++){
+                //console.log(dataCache[i].urls)
+                if(dataCache[i].urls.regular === favoritImg){
+                    console.log("inne i loopen")
+                    likes = dataCache[i].likes
+                    console.log(likes)
+                    name = dataCache[i].user.name
+                    console.log(name)
+                    let liked_by_user = dataCache[i].liked_by_user
+                    console.log(liked_by_user)
+                    break
+                } else {
+                    console.log("FAIL!")
+                }
+            }
+
         })
 
         const img = document.createElement('img')
